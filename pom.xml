@@ -9,8 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>br.com.fiap.fase5.capitulo4</groupId>
-	<artifactId>coleta</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>smart-recycle</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Smart Recicle</name>
 	<description>Aplicativo de coleta de lixo - Versão com MongoDB</description>
 	<url/>
