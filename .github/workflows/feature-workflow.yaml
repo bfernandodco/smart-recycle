@@ -1,16 +1,15 @@
-name: Build and Push Docker - Aplicando Técnicas de DevOps
+name: Build and Push - Aplicando Técnicas de DevOps
 
 on:
   push:
     branches:
-      - 'feature/**'
-      -
+      - *
 jobs:
   build:
     runs-on: ubuntu-latest
     services:
       mongodb:
-        image: mongo:6.0
+        image: mongo:latest
         ports:
           - 27017:27017
     steps:
@@ -25,3 +24,5 @@ jobs:
         run: mvn clean package
       - name: Build Dockerfile
         run: docker build -t coleta-app .
+      - name: Tests
+        run: mvn test
