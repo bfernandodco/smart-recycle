@@ -14,6 +14,7 @@ public interface CaminhaoMapper {
 
     CaminhaoMapper INSTANCE = Mappers.getMapper(CaminhaoMapper.class);
 
+    @Mapping(target = "localizacaoEmTempoReal", ignore = true)
     @Mapping(target = "rota", ignore = true)
     Caminhao caminhaoDtoToCaminhao(CaminhaoDto caminhaoDto);
 
