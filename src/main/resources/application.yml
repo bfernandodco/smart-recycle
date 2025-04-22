@@ -1,0 +1,6 @@
+jwt:
+  secret:
+    key: ${JWT.SECRET:dopamine}
+spring:
+  main:
+    allow-circular-references: true

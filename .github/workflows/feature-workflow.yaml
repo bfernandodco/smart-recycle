@@ -1,0 +1,27 @@
+name: Build and Push Docker - Aplicando Técnicas de DevOps
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+      -
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:6.0
+        ports:
+          - 27017:27017
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Maven Build
+        run: mvn clean package
+      - name: Build Dockerfile
+        run: docker build -t coleta-app .
