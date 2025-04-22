@@ -1,4 +1,4 @@
-name: Build & Tests - Aplicando Técnicas de DevOps
+name: Continuous Integration - Aplicando Técnicas de DevOps
 on:
   push:
     branches:
