@@ -1,6 +1,15 @@
 services:
-  mongo:
-    image: mongo:6.0
-    container_name: mongo
+  db:
+    container_name: mongodb
+    image: mongo:8.0
     ports:
       - "27017:27017"
+    environment:
+      MONGODB_URI: ${MONGODB_URI}
+  api:
+    build:
+      ports:
+        - "8080:8080"
+      environment:
+        MONGODB_URI: ${MONGODB_URI}
+        JSON_WEB_TOKEN_SECRET: ${JSON_WEB_TOKEN_SECRET}

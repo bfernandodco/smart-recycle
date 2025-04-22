@@ -36,14 +36,13 @@ public class AuthService implements UserDetailsService {
     public UsuarioExibicaoDto cadastrarAdmin(UsuarioCadastroDto dto) {
         try {
             Usuario usuario = UsuarioMapper.INSTANCE.usuarioCadastroDtoToUsuario(dto);
-            usuario.setSenha(authService.criptografarSenha(dto.senha()));
+            usuario.setSenha(this.criptografarSenha(dto.senha()));
             usuario.setRole(Role.ADMIN);
             repository.save(usuario);
             log.info("Usuário ADMIN cadastrado com sucesso.", usuario);
             return UsuarioMapper.INSTANCE.usuarioToUsuarioExibicaoDto(usuario);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new RuntimeException("Usuário ADMIN já cadastrado.");
         }
     }
-
 }

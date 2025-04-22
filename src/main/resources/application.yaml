@@ -1,0 +1,10 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  main:
+    allow-circular-references: true
+
+jwt:
+  secret:
+    key: ${JSON_WEB_TOKEN_SECRET:dopamine}

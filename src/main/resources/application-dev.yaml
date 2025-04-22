@@ -1,0 +1,13 @@
+server:
+  port: ${API_PORT}
+
+spring:
+  main:
+    allow-circular-references: true
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      port: ${MONGODB_PORT}
+jwt:
+  secret:
+    key: ${JSON_WEB_TOKEN_SECRET}
