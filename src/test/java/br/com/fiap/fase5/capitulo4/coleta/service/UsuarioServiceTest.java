@@ -49,7 +49,6 @@ class UsuarioServiceTest {
         );
 
         Usuario usuario = new Usuario();
-        usuario.setId(dto.id());
         usuario.setCpf(dto.cpf());
         usuario.setNome(dto.nome());
         usuario.setTelefone(dto.telefone());
@@ -64,9 +63,18 @@ class UsuarioServiceTest {
                 dto.email()
         );
 
-        when(mapper.usuarioCadastroDtoToUsuario(dto)).thenReturn(usuario);
+        when(mapper.usuarioCadastroDtoToUsuario(dto)).thenAnswer(invocation -> {
+            Usuario mappedUsuario = new Usuario();
+            mappedUsuario.setCpf(dto.cpf());
+            mappedUsuario.setNome(dto.nome());
+            mappedUsuario.setTelefone(dto.telefone());
+            mappedUsuario.setEmail(dto.email());
+            mappedUsuario.setSenha("senhaCriptografada");
+            mappedUsuario.setRole(Role.USER);
+            return mappedUsuario;
+        });
         when(authService.criptografarSenha(dto.senha())).thenReturn("senhaCriptografada");
-        when(repository.save(usuario)).thenReturn(usuario);
+        when(repository.save(any(Usuario.class))).thenAnswer(invocation -> invocation.getArgument(0));
         when(mapper.usuarioToUsuarioExibicaoDto(usuario)).thenReturn(exibicaoDto);
 
         UsuarioExibicaoDto result = service.cadastrar(dto);
