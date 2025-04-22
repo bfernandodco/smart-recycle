@@ -3,7 +3,9 @@ name: Build and Push - Aplicando Técnicas de DevOps
 on:
   push:
     branches:
-      - *
+      - main
+      - develop
+      - feature/**
 jobs:
   build:
     runs-on: ubuntu-latest
