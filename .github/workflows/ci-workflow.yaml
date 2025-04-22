@@ -1,5 +1,4 @@
-name: Build and Push - Aplicando Técnicas de DevOps
-
+name: Build, Push e Testes - Aplicando Técnicas de DevOps
 on:
   push:
     branches:
