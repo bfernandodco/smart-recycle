@@ -16,7 +16,7 @@ jobs:
       mongodb:
         image: mongo:latest
         ports:
-          - ${{ secrets.MONGODB_PORT }}
+          - "27017:27017"
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
