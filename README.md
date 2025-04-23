@@ -63,7 +63,7 @@ docker-compose up
 
 ## 🌐 Acesso aos serviços
 
-- **Swagger - Documentação da API:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- **Swagger - Documentação da API:** [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui.html)
 - **MongoDB:** Porta `27017` disponível no host
 
 A documentação da API está disponível via Swagger. Use a interface para testar endpoints, visualizar parâmetros e entender as rotas disponíveis.
