@@ -1,7 +1,6 @@
 spring:
   main:
     allow-circular-references: true
-
 springdoc:
   api-docs:
     enabled: true
@@ -9,4 +8,4 @@ springdoc:
     enabled: true
 jwt:
   secret:
-    key: "secret"
+    key: "local_secret"

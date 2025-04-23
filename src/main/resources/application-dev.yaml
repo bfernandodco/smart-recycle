@@ -1,12 +1,12 @@
 server:
-  port: ${SERVER_PORT}
+  port: ${PORT}
 spring:
   main:
     allow-circular-references: true
   data:
     mongodb:
       uri: ${MONGODB_URI}
-      port: ${MONGODB_PORT}
+      database: ${MONGODB_DATABASE}
 springdoc:
   api-docs:
     enabled: true

@@ -8,15 +8,12 @@ on:
 env:
   IMAGE_NAME: appweb-smart-recycle-dev
   AZURE_WEBAPP_NAME: appweb-smart-recycle-dev
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      mongodb:
-        image: mongo:latest
-        ports:
-          - "27017:27017"
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
@@ -50,3 +47,6 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_PROFILE }}
           images: 'bfernandodco/appweb-smart-recycle-dev:latest'
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}
