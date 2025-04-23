@@ -43,6 +43,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Set environment variables for Web App
         uses: azure/appservice-settings@v1
         with:
