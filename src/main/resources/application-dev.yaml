@@ -1,13 +1,17 @@
 server:
-  port: ${API_PORT}
-
+  port: ${PORT}
 spring:
   main:
     allow-circular-references: true
   data:
     mongodb:
       uri: ${MONGODB_URI}
-      port: ${MONGODB_PORT}
+      database: ${MONGODB_DATABASE}
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
 jwt:
   secret:
     key: ${JSON_WEB_TOKEN_SECRET}

@@ -2,8 +2,6 @@ name: Continuous Integration - Aplicando Técnicas de DevOps
 on:
   push:
     branches:
-      - main
-      - develop
       - feature/**
   pull_request:
     branches:

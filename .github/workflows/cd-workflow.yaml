@@ -1,0 +1,48 @@
+name: Continuous Delivery - Aplicando Técnicas de DevOps
+on:
+  push:
+    branches:
+      - develop
+env:
+  IMAGE_NAME: appweb-smart-recycle-dev
+  AZURE_WEBAPP_NAME: appweb-smart-recycle-dev
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java SDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_SECRET }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: 'bfernandodco/appweb-smart-recycle-dev:latest'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_PROFILE }}
+          images: 'bfernandodco/appweb-smart-recycle-dev:latest'
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}

@@ -1,10 +1,11 @@
-server:
-  port: ${SERVER_PORT}
-
 spring:
   main:
     allow-circular-references: true
-
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
 jwt:
   secret:
-    key: ${JSON_WEB_TOKEN_SECRET:dopamine}
+    key: "local_secret"
