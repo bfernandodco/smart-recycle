@@ -41,5 +41,4 @@ O arquivo `docker-compose.yml` define os seguintes serviços:
 Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
-cd <NOME_DO_REPOSITORIO>
+git clone https://github.com/bfernandodco/smart-recycle.git
