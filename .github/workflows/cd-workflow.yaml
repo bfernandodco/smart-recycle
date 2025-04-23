@@ -5,8 +5,8 @@ on:
         - develop
 
 env:
-  IMAGE_NAME: smart-recycle-app
-  AZURE_WEBAPP_NAME: smart-recycle-app
+  IMAGE_NAME: appweb-smart-recycle-dev
+  AZURE_WEBAPP_NAME: appweb-smart-recycle-dev
 
 jobs:
   build:
