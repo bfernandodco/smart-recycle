@@ -10,4 +10,4 @@ COPY --from=build /opt/smart-recycle/target/smart-recycle-0.0.1-SNAPSHOT.jar /op
 WORKDIR /opt/smart-recycle
 ENV PROFILE=prd
 EXPOSE 8080
-ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "smart-recycle.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dspring.profiles.active=$PROFILE -jar smart-recycle.jar"]
